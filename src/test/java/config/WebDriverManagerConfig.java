@@ -13,7 +13,7 @@ import java.util.logging.Level;
 
 public class WebDriverManagerConfig {
 
-    static WebDriver driver;
+    public static WebDriver driver;
 
     @BeforeEach
     void setUp() {

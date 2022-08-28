@@ -1,0 +1,18 @@
+<configuration scan="true">
+
+    <property name="DEV_HOME" value="${user.dir}/log"/>
+    <timestamp key="bySecond" datePattern="yyyyMMdd'T'HHmmss"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <encoder>
+                <pattern>%relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+            </encoder>
+        </layout>
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE"/>
+    </root>
+</configuration>
