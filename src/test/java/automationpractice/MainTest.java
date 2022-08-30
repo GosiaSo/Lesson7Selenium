@@ -16,7 +16,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 public class MainTest extends WebDriverManagerConfig {
 
     private static final String AUTOMATION_PRACTICE = "http://automationpractice.com/index.php";
-    private static final String PRODUCT_PRICES_XPATH = "//ul [@id=\"homefeatured\"]//li//div[1] [@itemprop=\"offers\"]/span [@itemprop=\"price\"]";
+    private static final String PRODUCT_PRICES_XPATH = "//ul [@id=\"homefeatured\"]//div [@class=\"right-block\"]//span [@itemprop=\"price\"]";
     private final List<String> expectedPrices = new ArrayList<>(List.of("$16.51", "$27.00", "$26.00", "$50.99", "$28.98", "$30.50", "$16.40"));
 
     private static final Logger log = LoggerFactory.getLogger(MainTest.class);
