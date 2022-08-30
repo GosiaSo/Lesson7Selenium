@@ -16,7 +16,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 public class MainTest extends WebDriverManagerConfig {
 
     private static final String AUTOMATION_PRACTICE = "http://automationpractice.com/index.php";
-    private static final String PRODUCT_PRICES_XPATH = "//ul [@id=\"homefeatured\"]//div [@class=\"right-block\"]//span [@itemprop=\"price\"]";
+//    private static final String PRODUCT_PRICES_XPATH = "//ul [@id=\"homefeatured\"]//div [@class=\"right-block\"]//span [@itemprop=\"price\"]";
     private final List<String> expectedPrices = new ArrayList<>(List.of("$16.51", "$27.00", "$26.00", "$50.99", "$28.98", "$30.50", "$16.40"));
 
     private static final Logger log = LoggerFactory.getLogger(MainTest.class);
@@ -28,7 +28,14 @@ public class MainTest extends WebDriverManagerConfig {
         log.info("Otworzono stronę: " + AUTOMATION_PRACTICE);
         driver.manage().window().maximize();
 
-        List<WebElement> productPrices = driver.findElements(By.xpath(PRODUCT_PRICES_XPATH));
+        List<WebElement> productPrices = new ArrayList<>();
+//        List<WebElement> productPrices = driver.findElements(By.xpath(PRODUCT_PRICES_XPATH));
+        WebElement homefeatured = driver.findElement(By.id("homefeatured"));
+        List<WebElement> rightBlocks = homefeatured.findElements(By.className("right-block"));
+        for (WebElement rightBlock : rightBlocks) {
+            productPrices.add(rightBlock.findElement(By.cssSelector("span[itemprop='price']")));
+        }
+
         List<String> prices = new ArrayList<>();
 
         for (WebElement productPrice : productPrices) {
